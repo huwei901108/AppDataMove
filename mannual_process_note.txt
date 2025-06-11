@@ -1,0 +1,20 @@
+gdu
+
+try to rename a folder
+
+if not ok, list all opened files in windows:
+openfiles /query /fo table /nh
+
+move "C:\Users\huwei\AppData\..." "D:\Users\huwei\AppData\..."
+
+mklink /D "<原路径>" "<真正存放的路径>"
+
+win+r cmd (ctrl+shift+enter to start)
+
+Local:
+mklink /D "C:\Users\huwei\AppData\Local\Google" "D:\Users\huwei\AppData\Local\Google"
+mklink /D "C:\Users\huwei\AppData\Local\Larian Studios" "D:\Users\huwei\AppData\Local\Larian Studios"
+
+Roaming:
+mklink /D "C:\Users\huwei\AppData\Roaming\Python" "D:\Users\huwei\AppData\Roaming\Python"
+mklink /D "C:\Users\huwei\AppData\Roaming\Tencent" "D:\Users\huwei\AppData\Roaming\Tencent"

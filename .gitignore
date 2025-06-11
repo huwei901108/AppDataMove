@@ -1,0 +1,9 @@
+# PyInstaller outputs
+*.spec
+/build
+/dist
+
+__pycache__
+
+# app generated files
+/tools
