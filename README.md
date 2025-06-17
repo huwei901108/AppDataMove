@@ -12,23 +12,27 @@
 ✅ Supports Local/LocalLow/Roaming directories
 
 ## Requirements
-
 - Windows 10/11
+
+## Quick Start
+1. download the latest release executable from the right side
+2. double-click to run
+
+## Requirements For Building
 - Python 3.7+
 - Poetry 1.2+
 
-## Quick Start
-
+## Run from Source
 ```powershell
 # Clone repository
-cd D:\
 git clone https://github.com/huwei901108/AppDataMove.git
 
 # Install dependencies
+cd AppDataMove
 poetry install
 
 # Run application
-poetry run python src/main.py
+./run.bat
 ```
 
 ## Build Standalone Executable

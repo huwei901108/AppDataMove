@@ -12,26 +12,33 @@
 ✅ 支持Local/LocalLow/Roaming目录
 
 ## 环境要求
-
 - Windows 10/11
+
+## 快速开始
+1. 下载右侧的最新release可执行文件
+2. 双击运行
+
+## 源码构建要求
 - Python 3.7+
 - Poetry 1.2+
 
-## 快速开始
-
+## 源码运行
 ```powershell
 # 克隆仓库
-cd D:\
 git clone https://github.com/huwei901108/AppDataMove.git
+```
 （或者，在国内可使用gitee仓库：
+```powershell
 git clone https://gitee.com/huwei818/AppDataMove.git
+```
 ）
-
+```powershell
 # 安装依赖
+cd AppDataMove
 poetry install
 
 # 运行程序
-poetry run python src/main.py
+./run.bat
 ```
 
 ## 编译独立程序
