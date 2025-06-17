@@ -10,8 +10,8 @@ import utils
 
 path_pattern = r"""
     ^c:\\users\\([\w\.-]+)          # Match_username_part
-    \\appdata\\(local|locallow|roaming)  # Match_one_of_the_three_required_subdirectories
-    \\([\w\.-]+)$                    # Match_any_valid_subdirectory_name
+    \\appdata\\(local|locallow|roaming)  # Match_appdata_subdirectories
+    \\([^\\/:*?\"<>|]+)$              # Match_valid_subdirectory_name
 """.replace(' ', '')
 
 def validate_appdata_path_pattern(path: str) -> bool:
