@@ -4,12 +4,10 @@ import zipfile
 import win32api
 import re
 
+from utils import does_user_confirm
+
 handle_url="https://download.sysinternals.com/files/Handle.zip"
 list_dlls_url="https://download.sysinternals.com/files/ListDlls.zip"
-
-def does_user_confirm() -> bool:
-    choice = input("Please input (y/n): ").strip().lower()
-    return choice == 'y'
 
 def handle_opened_file(paths: list[str]) -> bool:
     print(f"Found file [{len(paths)}] blocking process.")
@@ -47,6 +45,7 @@ def handle_opened_file_by_list_dlls(paths: list[str]) -> list[int]:
 def find_related_pid_by_list_dlls(paths: list[str], list_dlls_path: str) -> list[int]:
     pids = []
     for path in paths:
+        print(f"ListDlls checking file: {path}")
         try:
             result = subprocess.run(
                 [list_dlls_path, '-d', path],
@@ -196,7 +195,7 @@ def get_path_from_pid(pid: int) -> str:
 def find_related_pid(paths: list[str], handle_path: str):
     pids = []  # Store collected PIDs
     for path in paths:
-        print(f"Checking file: {path}")
+        print(f"Handle checking file: {path}")
         try:
             result = subprocess.run([handle_path, "-v", path, "-nobanner"],
                 capture_output=True, text=True, check=True)

@@ -6,6 +6,7 @@ import shutil
 import stat
 
 import opened_file_processing as ofp
+import utils
 
 path_pattern = r"""
     ^c:\\users\\([\w\.-]+)          # Match_username_part
@@ -139,9 +140,6 @@ def mksure_no_inuse_files(folder_path: str):
         print("done closing, continue to check again")
 
 def move_path(target_path: str, dest_path: str) -> bool:
-    if not mksure_no_inuse_files(target_path):
-        return False
-
     try:
         print("start copying files...")
         shutil.copytree(target_path, dest_path)
@@ -193,10 +191,18 @@ def main_process():
         print("Failed to get destination path")
         return 1
 
+    print(f"Checking opened files in src[{target_path}]...")
+    if not mksure_no_inuse_files(target_path):
+        return 2
+
+    print(f"Src[{target_path}]->Dst[{dest_path}]. Start copy?")
+    if not utils.does_user_confirm():
+        return 0
+
     mv_done = move_path(target_path, dest_path)
     if not mv_done:
         print(f"Failed to move path: {target_path} -> {dest_path}")
-        return 2
+        return 3
     mklink(target_path, dest_path)
     return 0
 def main():
